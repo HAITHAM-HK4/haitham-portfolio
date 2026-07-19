@@ -1,0 +1,73 @@
+export const PORTFOLIO_DATA = {
+  home: {
+    desc_en: 'A software developer — I craft responsive websites and mobile applications using HTML, CSS, JavaScript, React Native, and Node.js.',
+    desc_ar: 'مطور برمجيات — أصمم مواقع ويب وتطبيقات موبايل متجاوبة باستخدام HTML و CSS و JavaScript و React Native و Node.js.',
+  },
+  about: {
+    desc_en: 'I am Haitham Kallab, a Front-End Developer and Web Designer based in Lattakia, Syrian Arab Republic. I build clean, responsive interfaces and well-structured code using HTML, CSS, JS, TypeScript, React.js, and Next.js.',
+    desc_ar: 'أنا هيثم كلاب، مطور واجهات أمامية ومصمم ويب مقيم في اللاذقية، الجمهورية العربية السورية. أبني واجهات نظيفة ومتجاوبة وكود منظم جيداً باستخدام HTML و CSS و JS و TypeScript و React.js و Next.js.',
+    name_en: 'Haitham Kallab',
+    name_ar: 'هيثم كلاب',
+    title_en: 'Full-Stack Developer',
+    title_ar: 'مطور فول ستاك',
+    loc_en: 'Latakia, Syria',
+    loc_ar: 'اللاذقية، سوريا',
+    email: 'hk4@example.com',
+  },
+  skills: [
+    {
+      name_en: 'React & React Native',
+      name_ar: 'ريكت وريكت نيتف',
+      desc_en: 'Building modern web and mobile applications with React ecosystem',
+      desc_ar: 'بناء تطبيقات ويب وموبايل حديثة مع نظام React',
+      tags: 'React,React Native,JavaScript,TypeScript',
+    },
+    {
+      name_en: 'Frontend Development',
+      name_ar: 'تطوير الواجهات الأمامية',
+      desc_en: 'Creating responsive and accessible user interfaces',
+      desc_ar: 'إنشاء واجهات مستخدم متجاوبة وسهلة الوصول',
+      tags: 'HTML,CSS,JavaScript,Responsive Design',
+    },
+    {
+      name_en: 'Node.js & Backend',
+      name_ar: 'Node.js والخلفية',
+      desc_en: 'Developing server-side applications and APIs',
+      desc_ar: 'تطوير تطبيقات الخادم وواجهات برمجة التطبيقات',
+      tags: 'Node.js,Express,REST API',
+    },
+    {
+      name_en: 'UI/UX Design',
+      name_ar: 'تصميم واجهات المستخدم',
+      desc_en: 'Designing intuitive and beautiful user experiences',
+      desc_ar: 'تصميم تجارب مستخدم بديعة وسهلة الاستخدام',
+      tags: 'Figma,Design,User Experience',
+    },
+  ],
+  projects: [
+    {
+      img: '/project1.jpg',
+      link: '#',
+      name_en: 'Portfolio Website',
+      name_ar: 'موقع البورتفوليو',
+      short_en: 'A modern, responsive portfolio website built with React and Vite',
+      short_ar: 'موقع بورتفوليو حديث ومتجاوب مبني بـ React و Vite',
+      full_en: 'This portfolio website showcases my skills and projects. It features a modern dark theme, smooth animations, constellation background effect, and full bilingual support (English/Arabic). Built with React, Vite, and vanilla CSS for optimal performance.',
+      full_ar: 'موقع البورتفوليو هذا يعرض مهاراتي ومشاريعي. يتميز بمظهر داكن حديث، رسوم متحركة سلسة، تأثير خلفية كوكبية، ودعم كامل ثنائي اللغة (إنجليزي/عربي). مبني بـ React و Vite و CSS عادي للأداء الأمثل.',
+      tags: 'React,Vite,CSS,Responsive',
+    },
+  ],
+  edu: {
+    desc_en: 'Studied Computer Engineering & Technology, gaining a deep understanding of programming principles and software architecture. Contributed to scientific research in data modelling.',
+    desc_ar: 'درست هندسة الحاسوب والتكنولوجيا، وحصلت على فهم عميق لمبادئ البرمجة وهندسة البرمجيات. ساهمت في البحث العلمي في نمذجة البيانات.',
+  },
+  contact: {
+    email: 'hk4@example.com',
+    phone: '+963 967 728 034',
+    loc_en: 'Latakia, Syria',
+    loc_ar: 'اللاذقية، سوريا',
+    linkedin: 'https://www.linkedin.com/in/haitham-kallab-5aa943402',
+    coding_en: 'React Native',
+    coding_ar: 'ريكت نيتف',
+  },
+};
