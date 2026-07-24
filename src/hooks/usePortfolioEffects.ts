@@ -1,19 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
+import type { CustomCursorReturn, ScrollProgressReturn, PageLoaderReturn } from '../types/hooks';
 
 const isTouchDevice =
   typeof window !== 'undefined' &&
   (('ontouchstart' in window) || navigator.maxTouchPoints > 0);
 
-export function useCustomCursor() {
-  const dotRef = useRef(null);
-  const ringRef = useRef(null);
+export function useCustomCursor(): CustomCursorReturn {
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
   const mouse = useRef({ x: 0, y: 0 });
   const ring = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     if (isTouchDevice) return;
 
-    const onMove = (e) => {
+    const onMove = (e: MouseEvent) => {
       mouse.current = { x: e.clientX, y: e.clientY };
       if (dotRef.current) {
         dotRef.current.style.left = `${e.clientX}px`;
@@ -31,8 +32,10 @@ export function useCustomCursor() {
       requestAnimationFrame(animate);
     };
 
-    const onOver = (e) => {
-      if (!e.target.closest('a, button, input, textarea, .bento-card, .skill-card')) return;
+    const onOver = (e: MouseEvent) => {
+      if (!e.target) return;
+      const target = e.target as HTMLElement;
+      if (!target.closest('a, button, input, textarea, .bento-card, .skill-card')) return;
       if (dotRef.current) dotRef.current.style.transform = 'translate(-50%,-50%) scale(1.5)';
       if (ringRef.current) {
         ringRef.current.style.transform = 'translate(-50%,-50%) scale(1.5)';
@@ -40,8 +43,10 @@ export function useCustomCursor() {
       }
     };
 
-    const onOut = (e) => {
-      if (!e.target.closest('a, button, input, textarea, .bento-card, .skill-card')) return;
+    const onOut = (e: MouseEvent) => {
+      if (!e.target) return;
+      const target = e.target as HTMLElement;
+      if (!target.closest('a, button, input, textarea, .bento-card, .skill-card')) return;
       if (dotRef.current) dotRef.current.style.transform = 'translate(-50%,-50%) scale(1)';
       if (ringRef.current) {
         ringRef.current.style.transform = 'translate(-50%,-50%) scale(1)';
@@ -65,7 +70,7 @@ export function useCustomCursor() {
   return { dotRef, ringRef, isTouchDevice };
 }
 
-export function useScrollProgress() {
+export function useScrollProgress(): ScrollProgressReturn {
   const [progress, setProgress] = useState(0);
   const [sticky, setSticky] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -97,7 +102,7 @@ export function useScrollProgress() {
   return { progress, sticky, activeSection };
 }
 
-export function useRevealOnScroll(deps = []) {
+export function useRevealOnScroll(deps: unknown[] = []): void {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -116,14 +121,14 @@ export function useRevealOnScroll(deps = []) {
   }, deps);
 }
 
-export function useTypewriter(texts, speed = 100, deleteSpeed = 60, pause = 1800) {
+export function useTypewriter(texts: string[], speed = 100, deleteSpeed = 60, pause = 1800): string {
   const [text, setText] = useState('');
 
   useEffect(() => {
     let tIdx = 0;
     let cIdx = 0;
     let deleting = false;
-    let timer;
+    let timer: number;
 
     const loop = () => {
       const cur = texts[tIdx];
@@ -154,7 +159,7 @@ export function useTypewriter(texts, speed = 100, deleteSpeed = 60, pause = 1800
   return text;
 }
 
-export function usePageLoader(loading) {
+export function usePageLoader(loading: boolean): PageLoaderReturn {
   const [hidden, setHidden] = useState(false);
   const [pct, setPct] = useState(0);
 
@@ -175,9 +180,9 @@ export function usePageLoader(loading) {
 
   useEffect(() => {
     const hide = () => setHidden(true);
-    const fallback = setTimeout(hide, 5500);
+    const fallback = setTimeout(hide, 2500);
     if (!loading) {
-      const timer = setTimeout(hide, 5500);
+      const timer = setTimeout(hide, 2500);
       return () => {
         clearTimeout(fallback);
         clearTimeout(timer);

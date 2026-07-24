@@ -1,11 +1,22 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { TRANSLATIONS } from '../data/translations';
 
-const LanguageContext = createContext(null);
+interface LanguageContextValue {
+  isAr: boolean;
+  lang: 'en' | 'ar';
+  toggleLang: () => void;
+  t: (key: string) => string;
+}
 
-export function LanguageProvider({ children }) {
+const LanguageContext = createContext<LanguageContextValue | null>(null);
+
+interface LanguageProviderProps {
+  children: React.ReactNode;
+}
+
+export function LanguageProvider({ children }: LanguageProviderProps) {
   const [isAr, setIsAr] = useState(false);
-  const lang = isAr ? 'ar' : 'en';
+  const lang: 'en' | 'ar' = isAr ? 'ar' : 'en';
 
   useEffect(() => {
     document.documentElement.setAttribute('dir', isAr ? 'rtl' : 'ltr');
@@ -17,7 +28,7 @@ export function LanguageProvider({ children }) {
       isAr,
       lang,
       toggleLang: () => setIsAr((prev) => !prev),
-      t: (key) => TRANSLATIONS[key]?.[lang] ?? '',
+      t: (key: string) => TRANSLATIONS[key]?.[lang] ?? '',
     }),
     [isAr, lang],
   );
@@ -25,7 +36,7 @@ export function LanguageProvider({ children }) {
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }
 
-export function useLanguage() {
+export function useLanguage(): LanguageContextValue {
   const ctx = useContext(LanguageContext);
   if (!ctx) throw new Error('useLanguage must be used within LanguageProvider');
   return ctx;

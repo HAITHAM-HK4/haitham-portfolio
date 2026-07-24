@@ -1,4 +1,6 @@
-export const TRANSLATIONS = {
+import type { Translations, NavSection, DefaultPortfolioData } from '../types/translations';
+
+export const TRANSLATIONS: Translations = {
   'nav-home': { en: 'Home', ar: 'الرئيسية' },
   'nav-about': { en: 'About', ar: 'عني' },
   'nav-skills': { en: 'Skills', ar: 'المهارات' },
@@ -26,14 +28,14 @@ export const TRANSLATIONS = {
   'home-hello': { en: "Hello, It's Me", ar: 'مرحباً، أنا' },
 };
 
-export const TYPEWRITER_TEXTS = [
+export const TYPEWRITER_TEXTS: string[] = [
   'Web & Mobile Developer',
   'Frontend Specialist',
   'UI/UX Enthusiast',
   'Full-Stack Engineer',
 ];
 
-export const NAV_SECTIONS = [
+export const NAV_SECTIONS: NavSection[] = [
   { id: 'home', key: 'nav-home' },
   { id: 'about', key: 'nav-about' },
   { id: 'skills', key: 'nav-skills' },
@@ -42,7 +44,7 @@ export const NAV_SECTIONS = [
   { id: 'contact', key: 'nav-contact' },
 ];
 
-export const DEFAULT_PORTFOLIO_DATA = {
+export const DEFAULT_PORTFOLIO_DATA: DefaultPortfolioData = {
   home: { desc_en: '', desc_ar: '' },
   about: {
     desc_en: '',

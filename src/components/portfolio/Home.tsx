@@ -3,6 +3,8 @@ import { usePortfolio } from '../../context/PortfolioContext';
 import { TYPEWRITER_TEXTS } from '../../data/translations';
 import { useTypewriter } from '../../hooks/usePortfolioEffects';
 import VideoBackground from './VideoBackground';
+const profileHero = '/assets/haitham.jpg';
+
 
 export default function Home() {
   const { t, lang } = useLanguage();
@@ -10,14 +12,14 @@ export default function Home() {
   const typedText = useTypewriter(TYPEWRITER_TEXTS);
 
   const desc =
-    data?.home?.[`desc_${lang}`] ||
+    data?.home?.[`desc_${lang}` as keyof typeof data.home] ||
     'A software developer — I craft responsive websites and mobile applications using HTML, CSS, JavaScript, React Native, and Node.js.';
 
   return (
     <section className="home" id="home">
       <VideoBackground
         videoUrl="https://res.cloudinary.com/e2kvlfyf/video/upload/v1784386063/Labtop_eytpnl.webm"
-        poster="/haitham.jpg"
+   poster={profileHero}
       />
       <div className="home-content reveal">
         <h3><span>{t('home-hello')}</span></h3>
@@ -46,7 +48,7 @@ export default function Home() {
       <div className="home-img reveal">
         <div className="hexagon-wrapper breathe-animation">
           <div className="hexagon-frame">
-            <svg className="hexagon-svg" viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg">
+            <svg className="hexagon-svg" viewBox="0 0 170 190" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <clipPath id="hexClip2">
                   <polygon points="100,5 195,52.5 195,177.5 100,225 5,177.5 5,52.5" />
@@ -57,7 +59,7 @@ export default function Home() {
                 </linearGradient>
               </defs>
               <image
-                href="/haitham.jpg"
+            href={profileHero}
                 x="0"
                 y="0"
                 width="200"

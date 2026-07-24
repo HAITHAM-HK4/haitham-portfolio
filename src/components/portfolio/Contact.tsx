@@ -1,23 +1,24 @@
 import { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { usePortfolio } from '../../context/PortfolioContext';
+import VideoBackground from './VideoBackground';
 
 export default function Contact() {
   const { t, lang, isAr } = useLanguage();
   const { data } = usePortfolio();
   const contact = data?.contact || {};
-  const [status, setStatus] = useState('idle');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.target;
-    const btn = form.querySelector('button[type="submit"]');
+    const form = e.target as HTMLFormElement;
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
     const orig = btn.innerHTML;
     btn.textContent = isAr ? 'جاري الإرسال...' : 'Sending...';
     setStatus('sending');
 
     try {
-      const response = await fetch('https://formspree.io/f/xeevjlzd', {
+    const response = await fetch('https://formspree.io/f/mnjebvzb', {
         method: 'POST',
         body: new FormData(form),
         headers: { Accept: 'application/json' },
@@ -48,12 +49,16 @@ export default function Contact() {
 
   const email = contact.email || 'hk4@example.com';
   const phone = contact.phone || '+963 xxx xxx';
-  const location = contact[`loc_${lang}`] || 'Latakia, Syria';
+  const location = contact[`loc_${lang}` as keyof typeof contact] || 'Latakia, Syria';
   const linkedin = contact.linkedin || 'https://www.linkedin.com/in/haitham-kallab-5aa943402';
-  const coding = contact[`coding_${lang}`] || 'React Native';
+  const coding = contact[`coding_${lang}` as keyof typeof contact] || 'React Native';
 
   return (
     <section className="contact" id="contact">
+      <VideoBackground
+        videoUrl="https://res.cloudinary.com/e2kvlfyf/video/upload/v1784386075/Mobail_jumfsg.webm"
+        poster="/profile-section.jpg"
+      />
       <span className="sec-label reveal">Get In Touch</span>
       <h2
         className="heading reveal"
@@ -109,7 +114,7 @@ export default function Contact() {
             <input type="text" name="name" placeholder="Your Name" className="contact-single-input" required />
             <input type="email" name="email" placeholder="Your Email" className="contact-single-input" required />
             <input type="text" name="_subject" placeholder="Your Subject" className="contact-single-input" required />
-            <textarea name="message" cols="30" rows="5" placeholder="Your Message" required />
+            <textarea name="message" cols={30} rows={5} placeholder="Your Message" required />
             <button type="submit" className="btn btn-primary" style={{ width: '100%' }} disabled={status === 'sending'}>
               Send Message &#x279C;
             </button>

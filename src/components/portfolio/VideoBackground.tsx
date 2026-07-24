@@ -1,12 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 
-export default function VideoBackground({ videoUrl, poster = '/haitham.jpg' }) {
-  const videoRef = useRef(null);
+interface VideoBackgroundProps {
+  videoUrl: string;
+  poster?: string;
+}
+
+export default function VideoBackground({ videoUrl, poster = '/profile-hero.jpg' }: VideoBackgroundProps) {
+  const videoRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Lazy load: only load when section is in viewport
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -28,13 +32,13 @@ export default function VideoBackground({ videoUrl, poster = '/haitham.jpg' }) {
   }, []);
 
   useEffect(() => {
-    // Page Visibility API: pause video when tab is hidden
     const handleVisibilityChange = () => {
-      if (videoRef.current) {
+      const video = videoRef.current?.querySelector('video');
+      if (video) {
         if (document.hidden) {
-          videoRef.current.pause();
+          video.pause();
         } else {
-          videoRef.current.play();
+          video.play();
         }
       }
     };
