@@ -8,6 +8,8 @@ import type { Project } from '../../types/portfolio';
 interface PopupData {
   title: string;
   text: string;
+  image: string;
+  link: string;
 }
 
 const containerVariants = {
@@ -181,7 +183,7 @@ function ProjectCard({ project, lang, visitText, detailText, onDetails }: Projec
 
 export default function Projects() {
   const { t, lang, isAr } = useLanguage();
-  const { data } = usePortfolio();
+  const { data, setIsPopupOpen } = usePortfolio();
   const projects = data?.projects || [];
   const [popup, setPopup] = useState<PopupData | null>(null);
 
@@ -192,7 +194,15 @@ export default function Projects() {
     setPopup({
       title: project[`name_${lang}` as keyof Project] || '',
       text: project[`full_${lang}` as keyof Project] || '',
+      image: project.img || '',
+      link: project.link || '#',
     });
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setPopup(null);
+    setIsPopupOpen(false);
   };
 
   return (
@@ -238,7 +248,7 @@ export default function Projects() {
           ))}
         </motion.div>
       </section>
-      <AnimatePresence>{popup && <ProjectPopup {...popup} onClose={() => setPopup(null)} />}</AnimatePresence>
+      <AnimatePresence>{popup && <ProjectPopup {...popup} onClose={handleClosePopup} />}</AnimatePresence>
     </>
   );
 }

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { usePortfolio } from '../../context/PortfolioContext';
-import VideoBackground from './VideoBackground';
 
 export default function Contact() {
   const { t, lang, isAr } = useLanguage();
@@ -54,11 +53,19 @@ export default function Contact() {
   const coding = contact[`coding_${lang}` as keyof typeof contact] || 'React Native';
 
   return (
-    <section className="contact" id="contact">
-      <VideoBackground
-        videoUrl="https://res.cloudinary.com/e2kvlfyf/video/upload/v1784386075/Mobail_jumfsg.webm"
-        poster="/profile-section.jpg"
-      />
+    <section
+      className="contact"
+      id="contact"
+      style={{
+        position: 'relative',
+        backgroundImage:
+          'linear-gradient(rgba(5, 5, 15, 0.82), rgba(5, 5, 15, 0.82)), url(https://res.cloudinary.com/e2kvlfyf/video/upload/so_2,q_100,w_2560/v1784386075/Mobail_jumfsg.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
+      }}
+    >
       <span className="sec-label reveal">Get In Touch</span>
       <h2
         className="heading reveal"

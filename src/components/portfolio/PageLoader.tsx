@@ -5,20 +5,17 @@ interface PageLoaderProps {
 
 export default function PageLoader({ hidden, pct }: PageLoaderProps) {
   return (
-    <div id="page-loader" className={hidden ? 'hide' : ''}>
-      <video
-        className="loader-video"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-      >
-        <source
-          src="https://res.cloudinary.com/e2kvlfyf/video/upload/v1784386047/Chat_u3uwfo.webm"
-          type="video/webm"
-        />
-      </video>
+    <div
+      id="page-loader"
+      className={hidden ? 'hide' : ''}
+      style={{
+        backgroundImage:
+          'url(https://res.cloudinary.com/e2kvlfyf/video/upload/so_2,q_100,w_2560/v1784386047/Chat_u3uwfo.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <div className="loader-video-overlay" />
       <div className="loader-content">
         <div className="loader-avatar-container">

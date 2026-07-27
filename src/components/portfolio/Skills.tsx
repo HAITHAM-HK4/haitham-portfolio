@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 import { usePortfolio } from '../../context/PortfolioContext';
-import VideoBackground from './VideoBackground';
+
 
 export default function Skills() {
   const { t, lang } = useLanguage();
@@ -15,11 +15,23 @@ export default function Skills() {
   ];
 
   return (
-    <section className="skills-section" id="skills">
-      <VideoBackground
-        videoUrl="https://res.cloudinary.com/e2kvlfyf/video/upload/v1784386086/Security_tma2l0.webm"
-        poster="/profile-section.jpg"
-      />
+   <section
+  className="skills-section"
+  id="skills"
+  style={{
+    position: 'relative',
+    backgroundImage:
+      'linear-gradient(rgba(5, 5, 15, 0.82), rgba(5, 5, 15, 0.82)), url(https://res.cloudinary.com/e2kvlfyf/video/upload/so_2,q_100,w_2560/v1784386086/Security_tma2l0.jpg)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed',
+  }}
+>
+      
+
+      
+  
       <span className="sec-label reveal">{t('skills-label')}</span>
       <h2
         className="heading reveal"

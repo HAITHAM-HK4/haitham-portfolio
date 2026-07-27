@@ -60,7 +60,7 @@ export default function Education() {
           y: reduced ? 0 : bgY,
           backgroundColor: '#050a0d',
           backgroundImage:
-            'radial-gradient(ellipse 70% 55% at 15% 0%, rgba(45,212,191,0.14) 0%, transparent 55%), radial-gradient(ellipse 60% 50% at 100% 100%, rgba(45,212,191,0.08) 0%, transparent 55%), linear-gradient(180deg, rgba(2,6,23,0.97) 0%, rgba(2,6,23,0.9) 100%), url(https://res.cloudinary.com/e2kvlfyf/video/upload/so_3/v1784386063/Labtop_eytpnl.jpg)',
+            'radial-gradient(ellipse 70% 55% at 15% 0%, rgba(45,212,191,0.06) 0%, transparent 55%), radial-gradient(ellipse 60% 50% at 100% 100%, rgba(45,212,191,0.03) 0%, transparent 55%), linear-gradient(180deg, rgba(2,6,23,0.97) 0%, rgba(2,6,23,0.9) 100%), url(https://res.cloudinary.com/e2kvlfyf/video/upload/so_3/v1784386063/Labtop_eytpnl.jpg)',
           backgroundSize: 'cover, cover, cover, cover',
           backgroundPosition: 'center, center, center, center',
           backgroundAttachment: mobile ? 'scroll' : undefined,
@@ -70,11 +70,11 @@ export default function Education() {
       {/* Fine grid overlay — drifts at its own parallax speed for depth */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute inset-[-8%] opacity-[0.035]"
+        className="pointer-events-none absolute inset-[-8%] opacity-[0.015]"
         style={{
           y: reduced ? 0 : gridY,
           backgroundImage:
-            'linear-gradient(rgba(45,212,191,1) 1px, transparent 1px), linear-gradient(90deg, rgba(45,212,191,1) 1px, transparent 1px)',
+            'linear-gradient(rgba(45,212,191,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(45,212,191,0.3) 1px, transparent 1px)',
           backgroundSize: '48px 48px',
         }}
       />
@@ -92,12 +92,12 @@ export default function Education() {
             viewport={{ once: true, amount: 0.4 }}
           >
             <div className="mb-5 flex items-center gap-4">
-              <span className="font-mono text-xs font-semibold uppercase tracking-[0.4em] text-teal sm:text-sm">
+              <span className="font-mono text-xs font-semibold uppercase tracking-[0.4em] text-teal/50 sm:text-sm">
                 {lang === 'ar' ? 'المسار الأكاديمي' : 'Academic Path'}
               </span>
               <motion.span
                 variants={reduced ? undefined : lineVariants}
-                className="h-px flex-1 origin-left bg-gradient-to-r from-teal/60 to-transparent"
+                className="h-px flex-1 origin-left bg-gradient-to-r from-teal/30 to-transparent"
                 style={{ transformOrigin: lang === 'ar' ? 'right' : 'left' }}
               />
             </div>

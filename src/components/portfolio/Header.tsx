@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { usePortfolio } from '../../context/PortfolioContext';
 import { NAV_SECTIONS } from '../../data/translations';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -11,6 +12,7 @@ interface HeaderProps {
 
 export default function Header({ sticky, activeSection }: HeaderProps) {
   const { t, toggleLang, isAr } = useLanguage();
+  const { isPopupOpen } = usePortfolio();
   const [navVisible, setNavVisible] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -48,11 +50,11 @@ export default function Header({ sticky, activeSection }: HeaderProps) {
   initial={{ x: '-50%' }}
   animate={{
     x: '-50%',
-    scaleX: navVisible ? 1 : 0,
-    opacity: navVisible ? 1 : 0,
+    scaleX: navVisible && !isPopupOpen ? 1 : 0,
+    opacity: navVisible && !isPopupOpen ? 1 : 0,
   }}
   transition={{
-    duration: navVisible ? 1.5 : 1.0,
+    duration: navVisible && !isPopupOpen ? 1.5 : 1.0,
     ease: 'easeInOut',
   }}
   style={{ transformOrigin: 'center' }}

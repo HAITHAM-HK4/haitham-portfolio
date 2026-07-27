@@ -115,14 +115,14 @@ export default function EducationCard({ stage, index, lang, reduced }: Education
           boxShadow:
             '0 0 0 1px rgba(45,212,191,0.05), 0 25px 70px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.04)',
         }}
-        className="group relative isolate overflow-hidden rounded-[28px] border border-teal/20 transition-[box-shadow,border-color] duration-300"
+        className="group relative isolate overflow-hidden rounded-[28px] border border-teal/10 transition-[box-shadow,border-color] duration-300"
       >
         {/* Cursor-following radial glow, sits in its own z-layer */}
         <motion.div
           aria-hidden
           className="pointer-events-none absolute -inset-1 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           style={{
-            background: 'radial-gradient(320px circle at 50% 50%, rgba(45,212,191,0.16), transparent 70%)',
+            background: 'radial-gradient(320px circle at 50% 50%, rgba(45,212,191,0.08), transparent 70%)',
             x: glowX,
             y: glowY,
             translateZ: 30,
@@ -135,14 +135,14 @@ export default function EducationCard({ stage, index, lang, reduced }: Education
           className="pointer-events-none absolute inset-0 rounded-[28px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           style={{
             boxShadow:
-              '0 0 0 1px rgba(45,212,191,0.45), 0 0 60px rgba(45,212,191,0.2), inset 0 0 60px rgba(45,212,191,0.06)',
+              '0 0 0 1px rgba(45,212,191,0.25), 0 0 60px rgba(45,212,191,0.1), inset 0 0 60px rgba(45,212,191,0.03)',
           }}
         />
 
         {/* Giant ghost order number — parallax layer, floats deepest */}
         <motion.span
           aria-hidden
-          className="pointer-events-none absolute -top-6 select-none font-display font-black leading-none text-teal/[0.07] transition-colors duration-500 group-hover:text-teal/[0.13]"
+          className="pointer-events-none absolute -top-6 select-none font-display font-black leading-none text-teal/[0.03] transition-colors duration-500 group-hover:text-teal/[0.06]"
           style={{
             fontSize: 'clamp(7rem, 18vw, 13rem)',
             insetInlineEnd: '-0.5rem',
@@ -166,11 +166,11 @@ export default function EducationCard({ stage, index, lang, reduced }: Education
         >
           {/* Top row: period + order marker */}
           <motion.div variants={reduced ? undefined : itemUp} className="flex items-center justify-between gap-4">
-            <span className="inline-flex items-center gap-2 rounded-full border border-teal/40 bg-teal/10 px-4 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-teal">
-              <span className="h-1.5 w-1.5 rounded-full bg-teal shadow-[0_0_8px_2px_rgba(45,212,191,0.7)]" />
+            <span className="inline-flex items-center gap-2 rounded-full border border-teal/20 bg-teal/5 px-4 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-teal/70">
+              <span className="h-1.5 w-1.5 rounded-full bg-teal/70 shadow-[0_0_8px_2px_rgba(45,212,191,0.3)]" />
               {stage.period}
             </span>
-            <span className="font-mono text-xs font-medium tracking-[0.3em] text-teal/40">
+            <span className="font-mono text-xs font-medium tracking-[0.3em] text-teal/25">
               {order}
             </span>
           </motion.div>
@@ -186,12 +186,12 @@ export default function EducationCard({ stage, index, lang, reduced }: Education
           {/* Institution row */}
           <motion.div
             variants={reduced ? undefined : itemUp}
-            className="flex flex-wrap items-center gap-x-3 gap-y-1.5 border-s-2 border-teal/50 ps-4"
+            className="flex flex-wrap items-center gap-x-3 gap-y-1.5 border-s-2 border-teal/25 ps-4"
           >
             <span className="text-base font-semibold text-milk/90 sm:text-lg">{institution}</span>
             {location && (
               <span className="inline-flex items-center gap-1.5 text-sm text-milk/50">
-                <i className="fa-solid fa-location-dot text-teal/70" aria-hidden="true" />
+                <i className="fa-solid fa-location-dot text-teal/40" aria-hidden="true" />
                 {location}
               </span>
             )}
