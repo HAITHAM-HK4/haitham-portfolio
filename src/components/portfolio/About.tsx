@@ -16,8 +16,8 @@ export default function About() {
     about[`desc_${lang}` as keyof typeof about] ||
     'I am Haitham Kallab, a Front-End Developer and Web Designer based in Lattakia, Syrian Arab Republic. I build clean, responsive interfaces and well-structured code using HTML, CSS, JS, TypeScript, React.js, and Next.js.';
 
-  const cvFileAr = '/assets/CV_Haitham_Arabic1.pdf';
-  const cvFileEn = '/assets/CV_Haitham1.pdf';
+const cvFileAr = encodeURI('/assets/CV Haitham Arabic1.pdf');
+const cvFileEn = encodeURI('/assets/CV Haitham1.pdf');
   const cvFile = selectedCV === 'ar' ? cvFileAr : cvFileEn;
 
   const isPreviewOpen = selectedCV !== null;
