@@ -72,7 +72,7 @@ export default function CVPopup({ isOpen, onClose }: CVPopupProps) {
   const englishFlag = '🇬🇧';
 
   const handleViewCV = (lang: 'ar' | 'en') => {
-    const cvPath = lang === 'ar' ? '/cv-ar.pdf' : '/cv-en.pdf';
+    const cvPath = lang === 'ar' ? '/assets/CV Haitham Arabic1.pdf' : '/assets/CV Haitham1.pdf';
     window.open(cvPath, '_blank');
     onClose();
   };
