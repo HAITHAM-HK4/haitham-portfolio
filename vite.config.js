@@ -6,9 +6,13 @@ import tailwindcss from '@tailwindcss/vite';
 
 
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+
+
 export default defineConfig({
 
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), cloudflare()],
 
   server: {
 
@@ -23,4 +27,3 @@ export default defineConfig({
   },
 
 });
-
